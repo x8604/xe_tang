@@ -8,11 +8,19 @@
                 ixx="0.0323519" ixy="0" ixz="-0.000431382" iyy="0.0606346" iyz="0" izz="0.0810268"
                 x2="-0.235902" y2="0.0727514" z2="0.144141" roll2="0" pitch2="0" yaw2="0"/>
 
+    <gazebo reference="than_xe">
+        <material>Gazebo/DarkGray</material>
+    </gazebo>
+
     <xacro:link link_name="banh_xe_1"
                 x1="-1.2677e-19" y1="4.67093e-18" z1="0.00430301" roll1="0" pitch1="0" yaw1="0"
                 mass="0.522006"
                 ixx="0.00049418" ixy="1.06373e-20" ixz="1.06547e-45" iyy="0.00049418" iyz="2.78846e-46" izz="0.000673955"
                 x2="0" y2="0" z2="-0.025" roll2="-1.5708" pitch2="-3.64847e-42" yaw2="2.45344e-17"/>
+
+    <gazebo reference="banh_xe_1">
+        <material>Gazebo/Gray</material>
+    </gazebo>
 
     <xacro:joint joint_name="than_xe_banh_1" type="revolute"
                  x1="-0.365902" y1="0.212751" z1="0.169141" roll1="-1.5708" pitch1="1.42583" yaw1="3.14159"
@@ -27,6 +35,10 @@
                 ixx="0.00049418" ixy="2.78829e-20" ixz="9.04058e-46" iyy="0.00049418" iyz="-1.39449e-45" izz="0.000673955"
                 x2="0" y2="0" z2="-0.025" roll2="-1.5708" pitch2="-1.90898e-42" yaw2="4.22367e-17"/>
     
+    <gazebo reference="banh_xe_2">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
     <xacro:joint joint_name="than_xe_banh_2" type="revolute"
                  x1="-0.105902" y1="0.212751" z1="0.169141" roll1="-1.5708" pitch1="1.05145" yaw1="3.14159"
                  parent_link="than_xe"
@@ -40,6 +52,10 @@
                 ixx="0.00049418" ixy="-1.19623e-20" ixz="0" iyy="0.00049418" iyz="0" izz="0.000673955"
                 x2="5.55112e-17" y2="0" z2="-0.025" roll2="-1.5708" pitch2="0" yaw2="-1.73484e-17"/>
     
+    <gazebo reference="banh_xe_3">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
     <xacro:joint joint_name="than_xe_banh_3" type="revolute"
                  x1="-0.365902" y1="-0.0672486" z1="0.169141" roll1="-1.5708" pitch1="0.295982" yaw1="0"
                  parent_link="than_xe"
@@ -53,6 +69,10 @@
                 ixx="0.00049418" ixy="1.49967e-21" ixz="6.65827e-46" iyy="0.00049418" iyz="-1.24813e-46" izz="0.000673955"
                 x2="0" y2="0" z2="-0.025" roll2="-1.5708" pitch2="-2.12258e-42" yaw2="4.03777e-18"/>
     
+    <gazebo reference="banh_xe_4">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
     <xacro:joint joint_name="than_xe_banh_4" type="revolute"
                  x1="-0.105902" y1="-0.0672486" z1="0.169141" roll1="1.5708" pitch1="-1.53924" yaw1="3.14159"
                  parent_link="than_xe"
@@ -66,7 +86,11 @@
                 ixx="0.00760602" ixy="1.11093e-06" ixz="0" iyy="0.0406757" iyz="0" izz="0.0465957"
                 x2="3.33067e-16" y2="-5.55112e-17" z2="0" roll2="1.5708" pitch2="0" yaw2="0"/>
     
-    <xacro:joint joint_name="xich_1" type="fixed"
+    <gazebo reference="xich_1">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <xacro:joint joint_name="than_xe_xich_1" type="fixed"
                  x1="-0.235839" y1="-0.0322486" z1="0.169009" roll1="-1.5708" pitch1="0" yaw1="0"
                  parent_link="than_xe"
                  child_link="xich_1"
@@ -78,7 +102,11 @@
                 ixx="0.00760602" ixy="-1.11093e-06" ixz="0" iyy="0.0406757" iyz="0" izz="0.0465957"
                 x2="-0.0432788" y2="-0.055" z2="-0.06" roll2="-1.5708" pitch2="0" yaw2="0"/>
     
-    <xacro:joint joint_name="xich_2" type="fixed"
+    <gazebo reference="xich_2">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <xacro:joint joint_name="than_xe_xich_2" type="fixed"
                  x1="-0.278939" y1="0.177751" z1="0.114109" roll1="-1.5708" pitch1="0" yaw1="3.14159"
                  parent_link="than_xe"
                  child_link="xich_2"
@@ -90,6 +118,10 @@
                 ixx="0.0507892" ixy="0" ixz="0" iyy="0.0507892" iyz="0" izz="0.00254127"
                 x2="0" y2="0" z2="0" roll2="3.14159" pitch2="0" yaw2="0"/>
     
+    <gazebo reference="khau_1">
+        <material>Gazebo/White</material>
+    </gazebo>
+
     <xacro:joint joint_name="than_xe_khau_1" type="fixed"
                  x1="-0.173402" y1="0.0727514" z1="0.243141" roll1="3.14159" pitch1="0" yaw1="0"
                  parent_link="than_xe"
@@ -102,6 +134,10 @@
                 ixx="0.000545572" ixy="0" ixz="0" iyy="0.000545572" iyz="0" izz="0.00101825"
                 x2="0" y2="0" z2="-0.03" roll2="0" pitch2="0" yaw2="0"/>
     
+    <gazebo reference="khop">
+        <material>Gazebo/SkyBlue</material>
+    </gazebo>
+
     <xacro:joint joint_name="khau_1_khop" type="prismatic"
                  x1="0" y1="0" z1="-0.187558" roll1="3.14159" pitch1="0" yaw1="-1.86886e-29"
                  parent_link="khau_1"
@@ -115,6 +151,10 @@
                 ixx="0.0023024" ixy="-2.36835e-10" ixz="-6.71781e-06" iyy="0.0271882" iyz="1.68742e-11" izz="0.0288969"
                 x2="0" y2="0" z2="-0.03" roll2="-1.81353e-41" pitch2="1.58254e-41" yaw2="6.17393e-18"/>
     
+    <gazebo reference="khau_2">
+        <material>Gazebo/White</material>
+    </gazebo>
+
     <xacro:joint joint_name="khop_khau_2" type="revolute"
                  x1="-8.32667e-17" y1="5.55112e-17" z1="0" roll1="-1.81771e-25" pitch1="5.10563e-25" yaw1="-0.72926"
                  parent_link="khop"
@@ -128,6 +168,10 @@
                 ixx="3.50997e-05" ixy="-3.88943e-23" ixz="5.54226e-07" iyy="2.94944e-05" iyz="-3.84572e-24" izz="5.46193e-05"
                 x2="-5.55112e-17" y2="-6.93889e-17" z2="-2.77556e-17" roll2="3.14159" pitch2="0" yaw2="-6.93889e-18"/>
     
+    <gazebo reference="lidar">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
     <xacro:joint joint_name="than_xe_lidar" type="revolute"
                  x1="-0.305902" y1="0.0727514" z1="0.243141" roll1="3.14159" pitch1="0" yaw1="0"
                  parent_link="than_xe"
@@ -140,6 +184,10 @@
                 mass="0.00147364"
                 ixx="7.56624e-08" ixy="0" ixz="0" iyy="7.05662e-08" iyz="-2.12341e-09" izz="1.43344e-07"
                 x2="0" y2="0" z2="0" roll2="3.14159" pitch2="0" yaw2="0"/>
+
+    <gazebo reference="camera">
+        <material>Gazebo/Green</material>
+    </gazebo>
 
     <xacro:joint joint_name="than_xe_camera" type="fixed"
                  x1="-0.0869023" y1="0.0727514" z1="0.204141" roll1="-1.5708" pitch1="0" yaw1="1.5708"

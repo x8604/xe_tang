@@ -16,7 +16,9 @@
                 <geometry>
                     <mesh filename="package://xe_tang/meshes/${link_name}.stl"/>
                 </geometry>
-                <material name="${link_name}_material"/>
+                <material name="${link_name}_material">
+                    <color rgba="0 0 0 1.0"/>
+                </material>
             </visual>
             <collision>
                 <origin xyz="${x2} ${y2} ${z2}" rpy="${roll2} ${pitch2} ${yaw2}"/>

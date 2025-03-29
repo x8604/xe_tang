@@ -4,14 +4,15 @@
                 x1="-1.08316e-18" y1="-0.000645903" z1="-0.00126913" roll1="0" pitch1="0" yaw1="0"
                 mass="0.00147364"
                 ixx="7.56624e-08" ixy="0" ixz="0" iyy="7.05662e-08" iyz="-2.12341e-09" izz="1.43344e-07"
+                r="0" g="1.0" b="0" a="1.0"
                 x2="0" y2="0" z2="0" roll2="3.14159" pitch2="0" yaw2="0"/>
 
     <gazebo reference="camera">
         <material>Gazebo/Green</material>
 
-        <sensor type="camera" name="camera_pi">
+        <sensor type="camera" name="backup_camera">
             <update_rate>30.0</update_rate>
-            <camera name="head">
+            <camera name="camera_pi">
                 <horizontal_fov>1.3962634</horizontal_fov>
                 <image>
                     <width>800</width>
@@ -24,9 +25,6 @@
                 </clip>
                 <noise>
                     <type>gaussian</type>
-                    <!-- Noise is sampled independently per pixel on each frame.
-                    That pixel's noise value is added to each of its color
-                    channels, which at that point lie in the range [0,1]. -->
                     <mean>0.0</mean>
                     <stddev>0.007</stddev>
                 </noise>
@@ -34,10 +32,10 @@
             <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
                 <alwaysOn>true</alwaysOn>
                 <updateRate>0.0</updateRate>
-                <cameraName>rrbot/camera1</cameraName>
+                <cameraName>camera_pi</cameraName>
                 <imageTopicName>image_raw</imageTopicName>
                 <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-                <frameName>camera_link</frameName>
+                <frameName>camera</frameName>
                 <hackBaseline>0.07</hackBaseline>
                 <distortionK1>0.0</distortionK1>
                 <distortionK2>0.0</distortionK2>

@@ -1,6 +1,52 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="xe-tang">
-    <xacro:include filename="macros.xacro"/>
+    <xacro:macro name="link" params="link_name
+                                     x1 y1 z1 roll1 pitch1 yaw1
+                                     mass
+                                     ixx ixy ixz iyy iyz izz
+                                     r g b a
+                                     x2 y2 z2 roll2 pitch2 yaw2">
+        <link name="${link_name}">
+            <inertial>
+                <origin xyz="${x1} ${y1} ${z1}" rpy="${roll1} ${pitch1} ${yaw1}"/>
+                <mass value="${mass}"/>
+                <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}"/>
+            </inertial>
+            <visual>
+                <origin xyz="${x2} ${y2} ${z2}" rpy="${roll2} ${pitch2} ${yaw2}"/>
+                <geometry>
+                    <mesh filename="package://xe_tang/meshes/${link_name}.stl"/>
+                </geometry>
+                <material name="${link_name}_material">
+                    <color rgba="${r} ${g} ${b} ${a}"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="${x2} ${y2} ${z2}" rpy="${roll2} ${pitch2} ${yaw2}"/>
+                <geometry>
+                    <mesh filename="package://xe_tang/meshes/${link_name}.stl"/>
+                </geometry>
+            </collision>
+        </link>
+    </xacro:macro>
+
+    <xacro:macro name="joint" params="joint_name type
+                                      x1 y1 z1 roll1 pitch1 yaw1
+                                      parent_link
+                                      child_link
+                                      x2 y2 z2
+                                      effort:=0 velocity:=0 lower:=0 upper:=0">
+        <joint name="${joint_name}" type="${type}">
+            <origin xyz="${x1} ${y1} ${z1}" rpy="${roll1} ${pitch1} ${yaw1}"/>
+            <parent link="${parent_link}"/>
+            <child link="${child_link}"/>
+            <axis xyz="${x2} ${y2} ${z2}"/>
+            <xacro:if value="${type == 'revolute' or type == 'prismatic'}">
+                <limit effort="${effort}" velocity="${velocity}" lower="${lower}" upper="${upper}"/>
+            </xacro:if>
+        </joint>
+    </xacro:macro>
+
     <xacro:include filename="camera.xacro"/>
     <xacro:include filename="lidar.xacro"/>
     <xacro:include filename="tay_may.xacro"/>
@@ -9,6 +55,7 @@
                 x1="-0.234314" y1="0.0727514" z1="0.193682" roll1="0" pitch1="0" yaw1="0"
                 mass="7.43294"
                 ixx="0.0323519" ixy="0" ixz="-0.000431382" iyy="0.0606346" iyz="0" izz="0.0810268"
+                r="0.175" g="0.175" b="0.175" a="1.0"
                 x2="-0.235902" y2="0.0727514" z2="0.144141" roll2="0" pitch2="0" yaw2="0"/>
 
     <gazebo reference="than_xe">
@@ -19,6 +66,7 @@
                 x1="-1.2677e-19" y1="4.67093e-18" z1="0.00430301" roll1="0" pitch1="0" yaw1="0"
                 mass="0.522006"
                 ixx="0.00049418" ixy="1.06373e-20" ixz="1.06547e-45" iyy="0.00049418" iyz="2.78846e-46" izz="0.000673955"
+                r="0.3" g="0.3" b="0.3" a="1.0"
                 x2="0" y2="0" z2="-0.025" roll2="-1.5708" pitch2="-3.64847e-42" yaw2="2.45344e-17"/>
 
     <gazebo reference="banh_xe_1">
@@ -36,6 +84,7 @@
                 x1="-1.2677e-19" y1="4.67093e-18" z1="0.00430301" roll1="0" pitch1="0" yaw1="0"
                 mass="0.522006"
                 ixx="0.00049418" ixy="2.78829e-20" ixz="9.04058e-46" iyy="0.00049418" iyz="-1.39449e-45" izz="0.000673955"
+                r="0.3" g="0.3" b="0.3" a="1.0"
                 x2="0" y2="0" z2="-0.025" roll2="-1.5708" pitch2="-1.90898e-42" yaw2="4.22367e-17"/>
     
     <gazebo reference="banh_xe_2">
@@ -53,6 +102,7 @@
                 x1="5.53844e-17" y1="4.67093e-18" z1="0.00430301" roll1="0" pitch1="0" yaw1="0"
                 mass="0.522006"
                 ixx="0.00049418" ixy="-1.19623e-20" ixz="0" iyy="0.00049418" iyz="0" izz="0.000673955"
+                r="0.3" g="0.3" b="0.3" a="1.0"
                 x2="5.55112e-17" y2="0" z2="-0.025" roll2="-1.5708" pitch2="0" yaw2="-1.73484e-17"/>
     
     <gazebo reference="banh_xe_3">
@@ -70,6 +120,7 @@
                 x1="-1.2677e-19" y1="4.67093e-18" z1="0.00430301" roll1="0" pitch1="0" yaw1="0"
                 mass="0.522006"
                 ixx="0.00049418" ixy="1.49967e-21" ixz="6.65827e-46" iyy="0.00049418" iyz="-1.24813e-46" izz="0.000673955"
+                r="0.3" g="0.3" b="0.3" a="1.0"
                 x2="0" y2="0" z2="-0.025" roll2="-1.5708" pitch2="-2.12258e-42" yaw2="4.03777e-18"/>
     
     <gazebo reference="banh_xe_4">
@@ -87,6 +138,7 @@
                 x1="2.74156e-16" y1="-4.8039e-17" z1="-0.03" roll1="0" pitch1="0" yaw1="0"
                 mass="2.81002"
                 ixx="0.00760602" ixy="1.11093e-06" ixz="0" iyy="0.0406757" iyz="0" izz="0.0465957"
+                r="0.1" g="0.1" b="0.1" a="1.0"
                 x2="3.33067e-16" y2="-5.55112e-17" z2="0" roll2="1.5708" pitch2="0" yaw2="0"/>
     
     <gazebo reference="xich_1">
@@ -103,6 +155,7 @@
                 x1="-0.0432788" y1="-0.055" z1="-0.03" roll1="0" pitch1="0" yaw1="0"
                 mass="2.81002"
                 ixx="0.00760602" ixy="-1.11093e-06" ixz="0" iyy="0.0406757" iyz="0" izz="0.0465957"
+                r="0.1" g="0.1" b="0.1" a="1.0"
                 x2="-0.0432788" y2="-0.055" z2="-0.06" roll2="-1.5708" pitch2="0" yaw2="0"/>
     
     <gazebo reference="xich_2">

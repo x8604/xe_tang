@@ -86,8 +86,7 @@
     <xacro:joint joint_name="than_xe_xich_1" type="fixed"
                  x1="-0.235839" y1="-0.0322486" z1="0.169009" roll1="-1.5708" pitch1="0" yaw1="0"
                  parent_link="than_xe"
-                 child_link="xich_1"
-                 x2="0" y2="0" z2="1"/>
+                 child_link="xich_1"/>
 
     <xacro:link link_name="xich_2"
                 x1="-0.0432788" y1="-0.055" z1="-0.03" roll1="0" pitch1="0" yaw1="0"
@@ -103,6 +102,33 @@
     <xacro:joint joint_name="than_xe_xich_2" type="fixed"
                  x1="-0.278939" y1="0.177751" z1="0.114109" roll1="-1.5708" pitch1="0" yaw1="3.14159"
                  parent_link="than_xe"
-                 child_link="xich_2"
-                 x2="0" y2="0" z2="1"/>
+                 child_link="xich_2"/>
+
+    <transmission name="tran_left_wheel">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="than_xe_banh_1">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="left_wheel_motor">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="tran_right_wheel">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="than_xe_banh_2">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="right_wheel_motor">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/xe_tang</robotNamespace>
+        </plugin>
+    </gazebo>
 </robot>

@@ -14,8 +14,7 @@
     <xacro:joint joint_name="than_xe_khau_1" type="fixed"
                  x1="-0.173402" y1="0.0727514" z1="0.243141" roll1="3.14159" pitch1="0" yaw1="0"
                  parent_link="than_xe"
-                 child_link="khau_1"
-                 x2="0" y2="0" z2="1"/>
+                 child_link="khau_1"/>
 
     <xacro:link link_name="khop"
                 x1="7.82984e-19" y1="4.06082e-18" z1="-0.015" roll1="0" pitch1="0" yaw1="0"

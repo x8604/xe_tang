@@ -12,9 +12,15 @@
 			<odometryTopic>odom</odometryTopic>
 			<odometryFrame>odom</odometryFrame>
 			<robotBaseFrame>than_xe</robotBaseFrame>
-      		<publish_odom>true</publish_odom>
+			<publishTf>true</publishTf>
       		<publishOdomTF>true</publishOdomTF>
       		<publishWheelTF>true</publishWheelTF>
+			<rosDebugLevel>INFO</rosDebugLevel>
+			<publishWheelJointState>true</publishWheelJointState>
+			<wheelAcceleration>1.0</wheelAcceleration>
+			<wheelTorque>10</wheelTorque>
+			<updateRate>100</updateRate>
+			<odometrySource>encoder</odometrySource>
     	</plugin>
   	</gazebo>
 </robot>

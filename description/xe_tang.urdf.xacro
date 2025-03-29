@@ -47,14 +47,14 @@
         </joint>
     </xacro:macro>
 
-    <link name="world"/>
-
     <xacro:link link_name="than_xe"
                 x1="-0.234314" y1="0.0727514" z1="0.193682" roll1="0" pitch1="0" yaw1="0"
                 mass="7.43294"
                 ixx="0.0323519" ixy="0" ixz="-0.000431382" iyy="0.0606346" iyz="0" izz="0.0810268"
                 r="0.175" g="0.175" b="0.175" a="1.0"
                 x2="-0.235902" y2="0.0727514" z2="0.144141" roll2="0" pitch2="0" yaw2="0"/>
+
+    <link name="world"/>
 
     <gazebo reference="than_xe">
         <material>Gazebo/DarkGray</material>
@@ -68,6 +68,6 @@
     <xacro:include filename="arm_controller.xacro"/>
     <xacro:include filename="base_controller.xacro"/>
     <xacro:include filename="camera.xacro"/>
-    <xacro:include filename="encoder.xacro"/>
+    
     <xacro:include filename="lidar.xacro"/>
 </robot>

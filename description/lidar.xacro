@@ -35,7 +35,7 @@
             </ray>
             <plugin name="laser_controller" filename="libgazebo_ros_laser.so">
                 <topicName>scan</topicName>
-                <frame_name>lidar</frame_name>
+                <frameName>lidar</frameName>
             </plugin>
         </sensor>
     </gazebo>

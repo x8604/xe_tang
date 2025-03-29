@@ -7,12 +7,27 @@
                 r="0" g="1.0" b="0" a="1.0"
                 x2="0" y2="0" z2="0" roll2="3.14159" pitch2="0" yaw2="0"/>
 
+    <link name="camera_optical">
+        <inertial>
+                <origin xyz="-1.08316e-18 -0.000645903 -0.00126913" rpy="0 0 0"/>
+                <mass value="0.00000000001"/>
+                <inertia ixx="7.56624e-08" ixy="0" ixz="0" iyy="7.05662e-08" iyz="-2.12341e-09" izz="1.43344e-07"/>
+            </inertial>
+        <visual>
+            <geometry>
+                <box size="0.00000000001 0.00000000001 0.00000000001"/>
+            </geometry>
+        </visual>
+    </link>
+
     <gazebo reference="camera">
         <material>Gazebo/Green</material>
+    </gazebo>
 
-        <sensor type="camera" name="backup_camera">
+    <gazebo reference="camera_optical">
+        <sensor name="camera" type="camera">
             <update_rate>30.0</update_rate>
-            <camera name="camera_pi">
+            <camera>
                 <horizontal_fov>1.3962634</horizontal_fov>
                 <image>
                     <width>800</width>
@@ -35,7 +50,7 @@
                 <cameraName>camera_pi</cameraName>
                 <imageTopicName>image_raw</imageTopicName>
                 <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-                <frameName>camera</frameName>
+                <frameName>camera_optical</frameName>
                 <hackBaseline>0.07</hackBaseline>
                 <distortionK1>0.0</distortionK1>
                 <distortionK2>0.0</distortionK2>
@@ -50,5 +65,11 @@
                  x1="-0.0869023" y1="0.0727514" z1="0.204141" roll1="-1.5708" pitch1="0" yaw1="1.5708"
                  parent_link="than_xe"
                  child_link="camera"
+                 x2="0" y2="0" z2="1"/>
+
+    <xacro:joint joint_name="camera_camera_optical" type="fixed"
+                 x1="0" y1="0" z1="0" roll1="1.5708" pitch1="1.5708" yaw1="0"
+                 parent_link="camera"
+                 child_link="camera_optical"
                  x2="0" y2="0" z2="1"/>
 </robot>

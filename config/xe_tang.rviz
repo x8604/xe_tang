@@ -7,7 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /TF1/Frames1
-        - /LaserScan1
       Splitter Ratio: 0.5
     Tree Height: 622
   - Class: rviz/Selection
@@ -219,7 +218,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.3135275840759277
+      Distance: 1.8963440656661987
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -227,9 +226,9 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.15902818739414215
-        Y: 0.08120425790548325
-        Z: 0.19520440697669983
+        X: -0.12448900938034058
+        Y: 0.10419025272130966
+        Z: 0.22473615407943726
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false

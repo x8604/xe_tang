@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="base_controller">
+    <xacro:link link_name="banh_xe_1"
+                x1="-1.2677e-19" y1="4.67093e-18" z1="0.00430301" roll1="0" pitch1="0" yaw1="0"
+                mass="0.522006"
+                ixx="0.00049418" ixy="1.06373e-20" ixz="1.06547e-45" iyy="0.00049418" iyz="2.78846e-46" izz="0.000673955"
+                r="0.3" g="0.3" b="0.3" a="1.0"
+                x2="0" y2="0" z2="-0.025" roll2="-1.5708" pitch2="-3.64847e-42" yaw2="2.45344e-17"/>
+
+    <gazebo reference="banh_xe_1">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+    <xacro:joint joint_name="than_xe_banh_1" type="revolute"
+                 x1="-0.365902" y1="0.212751" z1="0.169141" roll1="-1.5708" pitch1="1.42583" yaw1="3.14159"
+                 parent_link="than_xe"
+                 child_link="banh_xe_1"
+                 x2="0" y2="0" z2="1"
+                 effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+
+    <xacro:link link_name="banh_xe_2"
+                x1="-1.2677e-19" y1="4.67093e-18" z1="0.00430301" roll1="0" pitch1="0" yaw1="0"
+                mass="0.522006"
+                ixx="0.00049418" ixy="2.78829e-20" ixz="9.04058e-46" iyy="0.00049418" iyz="-1.39449e-45" izz="0.000673955"
+                r="0.3" g="0.3" b="0.3" a="1.0"
+                x2="0" y2="0" z2="-0.025" roll2="-1.5708" pitch2="-1.90898e-42" yaw2="4.22367e-17"/>
+    
+    <gazebo reference="banh_xe_2">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+    <xacro:joint joint_name="than_xe_banh_2" type="revolute"
+                 x1="-0.105902" y1="0.212751" z1="0.169141" roll1="-1.5708" pitch1="1.05145" yaw1="3.14159"
+                 parent_link="than_xe"
+                 child_link="banh_xe_2"
+                 x2="0" y2="0" z2="1"
+                 effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+
+    <xacro:link link_name="banh_xe_3"
+                x1="5.53844e-17" y1="4.67093e-18" z1="0.00430301" roll1="0" pitch1="0" yaw1="0"
+                mass="0.522006"
+                ixx="0.00049418" ixy="-1.19623e-20" ixz="0" iyy="0.00049418" iyz="0" izz="0.000673955"
+                r="0.3" g="0.3" b="0.3" a="1.0"
+                x2="5.55112e-17" y2="0" z2="-0.025" roll2="-1.5708" pitch2="0" yaw2="-1.73484e-17"/>
+    
+    <gazebo reference="banh_xe_3">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+    <xacro:joint joint_name="than_xe_banh_3" type="revolute"
+                 x1="-0.365902" y1="-0.0672486" z1="0.169141" roll1="-1.5708" pitch1="0.295982" yaw1="0"
+                 parent_link="than_xe"
+                 child_link="banh_xe_3"
+                 x2="0" y2="0" z2="1"
+                 effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+
+    <xacro:link link_name="banh_xe_4"
+                x1="-1.2677e-19" y1="4.67093e-18" z1="0.00430301" roll1="0" pitch1="0" yaw1="0"
+                mass="0.522006"
+                ixx="0.00049418" ixy="1.49967e-21" ixz="6.65827e-46" iyy="0.00049418" iyz="-1.24813e-46" izz="0.000673955"
+                r="0.3" g="0.3" b="0.3" a="1.0"
+                x2="0" y2="0" z2="-0.025" roll2="-1.5708" pitch2="-2.12258e-42" yaw2="4.03777e-18"/>
+    
+    <gazebo reference="banh_xe_4">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+    <xacro:joint joint_name="than_xe_banh_4" type="revolute"
+                 x1="-0.105902" y1="-0.0672486" z1="0.169141" roll1="1.5708" pitch1="-1.53924" yaw1="3.14159"
+                 parent_link="than_xe"
+                 child_link="banh_xe_4"
+                 x2="0" y2="0" z2="1"
+                 effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+
+    <xacro:link link_name="xich_1"
+                x1="2.74156e-16" y1="-4.8039e-17" z1="-0.03" roll1="0" pitch1="0" yaw1="0"
+                mass="2.81002"
+                ixx="0.00760602" ixy="1.11093e-06" ixz="0" iyy="0.0406757" iyz="0" izz="0.0465957"
+                r="0.1" g="0.1" b="0.1" a="1.0"
+                x2="3.33067e-16" y2="-5.55112e-17" z2="0" roll2="1.5708" pitch2="0" yaw2="0"/>
+    
+    <gazebo reference="xich_1">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <xacro:joint joint_name="than_xe_xich_1" type="fixed"
+                 x1="-0.235839" y1="-0.0322486" z1="0.169009" roll1="-1.5708" pitch1="0" yaw1="0"
+                 parent_link="than_xe"
+                 child_link="xich_1"
+                 x2="0" y2="0" z2="1"/>
+
+    <xacro:link link_name="xich_2"
+                x1="-0.0432788" y1="-0.055" z1="-0.03" roll1="0" pitch1="0" yaw1="0"
+                mass="2.81002"
+                ixx="0.00760602" ixy="-1.11093e-06" ixz="0" iyy="0.0406757" iyz="0" izz="0.0465957"
+                r="0.1" g="0.1" b="0.1" a="1.0"
+                x2="-0.0432788" y2="-0.055" z2="-0.06" roll2="-1.5708" pitch2="0" yaw2="0"/>
+    
+    <gazebo reference="xich_2">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <xacro:joint joint_name="than_xe_xich_2" type="fixed"
+                 x1="-0.278939" y1="0.177751" z1="0.114109" roll1="-1.5708" pitch1="0" yaw1="3.14159"
+                 parent_link="than_xe"
+                 child_link="xich_2"
+                 x2="0" y2="0" z2="1"/>
+</robot>

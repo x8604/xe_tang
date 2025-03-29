@@ -1,38 +1,20 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="encoder">
-    <gazebo>
-        <plugin name="encoder" filename="libgazebo_ros_diff_drive.so">
-            <ros>
-                <namespace>/</namespace>
-                <remapping>odom:=/odom</remapping>
-	        </ros>
-
-            <update_rate>30</update_rate>
-
-            <leftJoint>than_xe_banh_1</leftJoint>
-            <leftJoint>than_xe_banh_2</leftJoint>
-            <rightJoint>than_xe_banh_3</rightJoint>
-            <rightJoint>than_xe_banh_4</rightJoint>
-
-            <wheelSeparation>0.1566</wheelSeparation>
-            <wheelDiameter>0.07</wheelDiameter>
-	        <wheelAcceleration>1.0</wheelAcceleration>
-	        <wheelTorque>10</wheelTorque>
-
-            <!-- Chủ đề và khung TF -->
-	        <commandTopic>cmd_vel</commandTopic>
-	        <odometryTopic>odom</odometryTopic>
-	        <odometryFrame>odom</odometryFrame>
-	        <robotBaseFrame>base_footprint</robotBaseFrame>
-
-	        <!-- Xuất transform và trạng thái bánh xe -->
-	        <publishWheelTF>true</publishWheelTF>       	<!-- Xuất TF của bánh xe -->
-	        <publishOdomTF>true</publishOdomTF>         	<!-- Xuất TF của odometry -->
-	        <publishWheelJointState>true</publishWheelJointState> <!-- Xuất trạng thái joint của bánh xe -->
-	        <publishTf>1</publishTf>                    	<!-- Xuất thông tin TF -->
-
-        	<!-- Nguồn dữ liệu odometry (0 = ground truth, 1 = encoder) -->
-	        <odometrySource>encoder</odometrySource>
-	        <rosDebugLevel>info</rosDebugLevel>
-        </plugin>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+	<gazebo>
+    	<plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+      		<leftJoint>than_xe_banh_1</leftJoint>
+      		<rightJoint>than_xe_banh_2</rightJoint>
+      		<wheelSeparation>0.35</wheelSeparation>
+      		<wheelDiameter>0.1</wheelDiameter>
+      		<maxWheelTorque>200</maxWheelTorque>
+      		<maxWheelAcceleration>10.0</maxWheelAcceleration>
+      		<commandTopic>cmd_vel</commandTopic>
+			<odometryTopic>odom</odometryTopic>
+			<odometryFrame>odom</odometryFrame>
+			<robotBaseFrame>than_xe</robotBaseFrame>
+      		<publish_odom>true</publish_odom>
+      		<publishOdomTF>true</publishOdomTF>
+      		<publishWheelTF>true</publishWheelTF>
+    	</plugin>
+  	</gazebo>
 </robot>

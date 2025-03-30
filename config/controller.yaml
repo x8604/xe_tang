@@ -4,11 +4,10 @@ joint_state_controller:
 
 banh_4_controller:
   type: velocity_controllers/JointVelocityController
-  joint: banh_4_joint
+  joint: banh_xe_4_joint
   pid: {p: 10.0, i: 0.1, d: 10.0}
 
 banh_2_controller:
   type: velocity_controllers/JointVelocityController
-  joint: banh_2_joint
+  joint: banh_xe_2_joint
   pid: {p: 10.0, i: 0.1, d: 10.0}
-

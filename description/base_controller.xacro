@@ -7,11 +7,7 @@
                 r="0.3" g="0.3" b="0.3" a="1.0"
                 x2="-6.93889e-18" y2="2.77556e-17" z2="-0.025" roll2="-1.5708" pitch2="-3.64847e-42" yaw2="2.45344e-17"/>
 
-    <gazebo reference="banh_xe_1">
-        <material>Gazebo/Gray</material>
-        <mu1>0.2</mu1>
-        <mu2>0.2</mu2>
-    </gazebo>
+    <xacro:gazebo reference="banh_xe_1" material="Gazebo/Gray" mu1="0.2" mu2="0.2"/>
 
     <xacro:joint joint_name="than_xe_banh_1" type="continuous"
                  x1="-0.127563" y1="0.14" z1="0.0641321" roll1="-1.5708" pitch1="1.42583" yaw1="3.14159"
@@ -27,11 +23,7 @@
                 r="0.3" g="0.3" b="0.3" a="1.0"
                 x2="0" y2="-1.38778e-17" z2="-0.025" roll2="-1.5708" pitch2="-1.90898e-42" yaw2="4.22367e-17"/>
     
-    <gazebo reference="banh_xe_2">
-        <material>Gazebo/Gray</material>
-        <mu1>0.2</mu1>
-        <mu2>0.2</mu2>
-    </gazebo>
+    <xacro:gazebo reference="banh_xe_2" material="Gazebo/Gray" mu1="0.2" mu2="0.2"/>
 
     <xacro:joint joint_name="than_xe_banh_2" type="continuous"
                  x1="0.132437" y1="0.14" z1="0.0641321" roll1="-1.5708" pitch1="1.05145" yaw1="3.14159"
@@ -47,11 +39,7 @@
                 r="0.3" g="0.3" b="0.3" a="1.0"
                 x2="0" y2="3.46945e-18" z2="-0.025" roll2="-1.5708" pitch2="0" yaw2="-1.73484e-17"/>
     
-    <gazebo reference="banh_xe_3">
-        <material>Gazebo/Gray</material>
-        <mu1>0.2</mu1>
-        <mu2>0.2</mu2>
-    </gazebo>
+    <xacro:gazebo reference="banh_xe_3" material="Gazebo/Gray" mu1="0.2" mu2="0.2"/>
 
     <xacro:joint joint_name="than_xe_banh_3" type="continuous"
                  x1="-0.127563" y1="-0.14" z1="0.0641321" roll1="-1.5708" pitch1="0.295982" yaw1="0"
@@ -67,11 +55,7 @@
                 r="0.3" g="0.3" b="0.3" a="1.0"
                 x2="2.77556e-17" y2="0" z2="-0.025" roll2="-1.5708" pitch2="7.68415e-43" yaw2="1.4056e-18"/>
     
-    <gazebo reference="banh_xe_4">
-        <material>Gazebo/Gray</material>
-        <mu1>0.2</mu1>
-        <mu2>0.2</mu2>
-    </gazebo>
+    <xacro:gazebo reference="banh_xe_4" material="Gazebo/Gray" mu1="0.2" mu2="0.2"/>
 
     <xacro:joint joint_name="than_xe_banh_4" type="continuous"
                  x1="0.132437" y1="-0.14" z1="0.0641321" roll1="1.5708" pitch1="0.033338" yaw1="3.14159"
@@ -86,12 +70,8 @@
                 ixx="0.00760602" ixy="1.11093e-06" ixz="0" iyy="0.0406757" iyz="0" izz="0.0465957"
                 r="0.1" g="0.1" b="0.1" a="1.0"
                 x2="3.40439e-16" y2="-5.55112e-17" z2="0" roll2="1.5708" pitch2="0" yaw2="0"/>
-    
-    <gazebo reference="xich_1">
-        <material>Gazebo/FlatBlack</material>
-        <mu1>0.2</mu1>
-        <mu2>0.2</mu2>
-    </gazebo>
+
+    <xacro:gazebo reference="xich_1" material="Gazebo/FlatBlack" mu1="0.2" mu2="0.2"/>
 
     <xacro:joint joint_name="than_xe_xich_1" type="fixed"
                  x1="0.0025" y1="-0.105" z1="0.064" roll1="-1.5708" pitch1="1.82546e-16" yaw1="0"
@@ -105,11 +85,7 @@
                 r="0.1" g="0.1" b="0.1" a="1.0"
                 x2="-0.0432788" y2="-0.055" z2="-0.06" roll2="-1.5708" pitch2="0" yaw2="0"/>
     
-    <gazebo reference="xich_2">
-        <material>Gazebo/FlatBlack</material>
-        <mu1>0.2</mu1>
-        <mu2>0.2</mu2>
-    </gazebo>
+    <xacro:gazebo reference="xich_2" material="Gazebo/FlatBlack" mu1="0.2" mu2="0.2"/>
 
     <xacro:joint joint_name="than_xe_xich_2" type="fixed"
                  x1="-0.0406" y1="0.105" z1="0.0091" roll1="-1.5708" pitch1="0" yaw1="3.14159"
@@ -134,4 +110,13 @@
             <legacyMode>false</legacyMode>
         </plugin>
     </gazebo>
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/xe_tang</robotNamespace>
+        </plugin>
+    </gazebo>
+
+    <xacro:transmission joint_name="than_xe_banh_4" actuator_name="left_wheel_motor"/>
+    <xacro:transmission joint_name="than_xe_banh_2" actuator_name="right_wheel_motor"/>
 </robot>

@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="xe-tang">
+    <xacro:property name="PI" value="3.141592653589793"/>
+
     <xacro:macro name="link" params="link_name
                                      x1 y1 z1 roll1 pitch1 yaw1
                                      mass
@@ -51,7 +53,26 @@
         </joint>
     </xacro:macro>
 
-    <xacro:property name="PI" value="3.141592653589793"/>
+    <xacro:macro name="transmission" params="joint_name actuator_name">
+        <transmission name="${joint_name}_transimission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <actuator name="${actuator_name}">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+            <joint name="${joint_name}">
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            </joint>
+        </transmission>
+    </xacro:macro>
+
+    <xacro:macro name="gazebo" params="reference material mu1 mu2">
+        <gazebo reference="${reference}">
+            <material>${material}</material>
+            <mu1>${mu1}</mu1>
+            <mu2>${mu2}</mu2>
+        </gazebo>
+    </xacro:macro>
 
     <xacro:link link_name="than_xe"
                 x1="0.00402455" y1="4.22475e-17" z1="0.0886727" roll1="0" pitch1="0" yaw1="0"
@@ -60,11 +81,7 @@
                 r="0.175" g="0.175" b="0.175" a="1.0"
                 x2="0.00243663" y2="4.16334e-17" z2="0.0391321" roll2="0" pitch2="0" yaw2="0"/>
 
-    <gazebo reference="than_xe">
-        <material>Gazebo/DarkGray</material>
-        <mu1>0.2</mu1>
-        <mu2>0.2</mu2>
-    </gazebo>
+    <xacro:gazebo reference="than_xe" material="Gazebo/DarkGray" mu1="0.2" mu2="0.2"/>
 
     <xacro:include filename="arm_controller.xacro"/>
     <xacro:include filename="base_controller.xacro"/>

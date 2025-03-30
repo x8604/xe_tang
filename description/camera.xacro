@@ -9,11 +9,7 @@
 
     <link name="camera_optical"/>
 
-    <gazebo reference="camera">
-        <material>Gazebo/Green</material>
-        <mu1>0.2</mu1>
-        <mu2>0.2</mu2>
-    </gazebo>
+    <xacro:gazebo reference="camera" material="Gazebo/Green" mu1="0.2" mu2="0.2"/>
 
     <gazebo reference="camera_optical">
         <sensor name="camera" type="camera">

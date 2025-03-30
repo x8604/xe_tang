@@ -3,12 +3,12 @@ joint_state_controller:
     publish_rate: 50
 diff_drive_controller:
     type: diff_drive_controller/DiffDriveController
-    left_wheel: banh_xe_4_joint
-    right_wheel: banh_xe_2_joint
+    left_wheel: ['banh_xe_4_joint', 'banh_xe_3_joint']
+    right_wheel: ['banh_xe_2_joint', 'banh_xe_1_joint']
     pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
     twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
     publish_rate: 50
-    wheel_separation: 0.135  # Adjust based on your robot
-    wheel_radius: 0.05      # Adjust based on your robot
+    wheel_separation: 0.135
+    wheel_radius: 0.05
     cmd_vel_timeout: 0.25
     velocity_rolling_window_size: 10

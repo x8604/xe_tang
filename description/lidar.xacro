@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lidar">
     <xacro:link link_name="lidar"
-                x1="0.00219031" y1="-7.26829e-17" z1="-0.0123115" roll1="0" pitch1="0" yaw1="0"
+                x1="0.00218942" y1="-6.24511e-05" z1="-0.0123115" roll1="0" pitch1="0" yaw1="0"
                 mass="0.0941187"
-                ixx="3.50997e-05" ixy="-3.88943e-23" ixz="5.54226e-07" iyy="2.94944e-05" iyz="-3.84572e-24" izz="5.46193e-05"
+                ixx="3.50951e-05" ixy="-1.59755e-07" ixz="5.54001e-07" iyy="2.9499e-05" iyz="-1.58024e-08" izz="5.46193e-05"
                 r="0" g="0" b="0" a="1.0"
-                x2="-5.55112e-17" y2="-6.93889e-17" z2="-2.77556e-17" roll2="3.14159" pitch2="0" yaw2="-6.93889e-18"/>
+                x2="-1.249e-16" y2="2.23093e-17" z2="0" roll2="3.14159" pitch2="0" yaw2="-0.0285163"/>
     
     <gazebo reference="lidar">
         <material>Gazebo/Black</material>
@@ -41,9 +41,9 @@
     </gazebo>
 
     <xacro:joint joint_name="than_xe_lidar" type="revolute"
-                 x1="-0.305902" y1="0.0727514" z1="0.243141" roll1="3.14159" pitch1="0" yaw1="0"
+                 x1="-0.0675634" y1="4.37765e-17" z1="0.138132" roll1="3.14159" pitch1="0" yaw1="0"
                  parent_link="than_xe"
                  child_link="lidar"
                  x2="0" y2="0" z2="1"
-                 effort="10" velocity="10" lower="0" upper="4.71239"/>
+                 effort="10" velocity="10" lower="-1.54228" upper="1.59931"/>
 </robot>

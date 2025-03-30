@@ -1,165 +1,103 @@
 #!/usr/bin/env python3
-
-"""
-Code điều khiển robot trong Gazebo bằng bàn phím thông qua plugin libgazebo_ros_diff_drive.so
-sử dụng thư viện pynput để bắt sự kiện phím một cách hiệu quả.
-
-Cách sử dụng:
-- Phím mũi tên: điều khiển chuyển động của robot
-  + MŨI TÊN LÊN/XUỐNG: tiến/lùi
-  + MŨI TÊN TRÁI/PHẢI: rẽ trái/phải
-- Phím w/s: tăng/giảm tốc độ tuyến tính
-- Phím a/d: tăng/giảm tốc độ góc
-- Phím Esc: thoát
-
-Robot sẽ dừng lại khi không có phím mũi tên nào được nhấn.
-"""
-
 import rospy
-from geometry_msgs.msg import Twist
-from pynput import keyboard
-import numpy as np
+from std_msgs.msg import Float64
 import sys
+import tty
+import termios
 
-# Giá trị tốc độ
-MIN_VEL = np.zeros(2)  # [tuyến tính, góc]
-MAX_VEL = np.array([1.0, 3.14])  # [tuyến tính, góc]
-LIN_INCREMENT = np.array([0.02, 0.0])  # Mức tăng tốc độ tuyến tính
-ANG_INCREMENT = np.array([0.0, 0.1])  # Mức tăng tốc độ góc
+class KeyboardControl:
+    def __init__(self):
+        # Khởi tạo node ROS
+        rospy.init_node('keyboard_control', anonymous=True)
 
-# Biến toàn cục để theo dõi trạng thái phím
-vel = np.array([0.5, 1.0])  # Tốc độ mặc định [tuyến tính, góc]
-CHARS = set()  # Tập hợp các phím chữ đang được nhấn
-SPECIALS = set()  # Tập hợp các phím đặc biệt đang được nhấn
+        # Publisher cho các lệnh vận tốc bánh xe
+        self.pub_left = rospy.Publisher('/left_wheel_joint_velocity_controller/command', Float64, queue_size=10)
+        self.pub_right = rospy.Publisher('/right_wheel_joint_velocity_controller/command', Float64, queue_size=10)
 
-# Định nghĩa hành động cho các phím chữ
-CHAR_ACTIONS = {
-    "w": lambda vel: np.minimum(vel + LIN_INCREMENT, MAX_VEL),
-    "s": lambda vel: np.maximum(vel - LIN_INCREMENT, MIN_VEL),
-    "a": lambda vel: np.minimum(vel + ANG_INCREMENT, MAX_VEL),
-    "d": lambda vel: np.maximum(vel - ANG_INCREMENT, MIN_VEL),
-}
+        # Tốc độ giới hạn
+        self.max_speed = 5.0  # Giới hạn vận tốc tối đa (radian/s)
+        self.min_speed = -5.0  # Giới hạn vận tốc tối thiểu (radian/s)
+        self.speed_step = 0.5  # Mức tăng/giảm tốc độ
 
-# Định nghĩa hành động cho các phím đặc biệt
-SPECIALS_ACTIONS = {
-    keyboard.Key.up: lambda return_vel, vel: return_vel + np.array([1.0, 0]) * vel,
-    keyboard.Key.down: lambda return_vel, vel: return_vel + np.array([-1.0, 0]) * vel,
-    keyboard.Key.left: lambda return_vel, vel: return_vel + np.array([0.0, 1.0]) * vel,
-    keyboard.Key.right: lambda return_vel, vel: return_vel + np.array([0.0, -1.0]) * vel,
-}
+        # Vận tốc ban đầu
+        self.linear_speed = 0.0  # Tốc độ tiến/lùi
+        self.angular_speed = 0.0  # Tốc độ quay
 
-def clear_line():
-    """Xóa dòng hiện tại trên stdout để phím đã nhấn không hiển thị"""
-    sys.stdout.write("\r" + " " * 80 + "\r")
-    sys.stdout.flush()
+    def get_key(self):
+        """Đọc phím từ bàn phím mà không cần nhấn Enter"""
+        fd = sys.stdin.fileno()
+        old_settings = termios.tcgetattr(fd)
+        try:
+            tty.setraw(fd)
+            key = sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+        return key
 
-def on_press(key):
-    """Xử lý sự kiện phím được nhấn"""
-    global CHARS, SPECIALS
-    
-    # Kiểm tra nếu là phím Esc để thoát
-    if key == keyboard.Key.esc:
-        return False  # Dừng listener
-    
-    # Xử lý các phím đặc biệt (mũi tên)
-    if isinstance(key, keyboard.Key) and key in SPECIALS_ACTIONS:
-        SPECIALS.add(key)
-    
-    # Xử lý các phím chữ (w, s, a, d)
-    elif isinstance(key, keyboard.KeyCode) and hasattr(key, 'char') and key.char in CHAR_ACTIONS:
-        CHARS.add(key.char)
-    
-    # Cập nhật và gửi vận tốc
-    update_velocity()
-    return True
+    def run(self):
+        rospy.loginfo("Điều khiển robot bằng bàn phím:")
+        rospy.loginfo("w: Tiến | s: Lùi | a: Quay trái | d: Quay phải")
+        rospy.loginfo("q/z: Tăng/Giảm tốc độ tiến/lùi")
+        rospy.loginfo("e/c: Tăng/Giảm tốc độ quay")
+        rospy.loginfo("x: Dừng | f: Dừng và thoát")
 
-def on_release(key):
-    """Xử lý sự kiện phím được thả ra"""
-    global CHARS, SPECIALS
-    
-    # Xử lý các phím đặc biệt (mũi tên)
-    if isinstance(key, keyboard.Key) and key in SPECIALS_ACTIONS:
-        SPECIALS.discard(key)
-    
-    # Xử lý các phím chữ (w, s, a, d)
-    elif isinstance(key, keyboard.KeyCode) and hasattr(key, 'char') and key.char in CHAR_ACTIONS:
-        CHARS.discard(key.char)
-    
-    # Cập nhật và gửi vận tốc
-    update_velocity()
-    return True
+        while not rospy.is_shutdown():
+            key = self.get_key()
 
-def update_velocity():
-    """Cập nhật vận tốc dựa trên phím được nhấn và gửi lệnh điều khiển"""
-    global vel, cmd_vel_pub
-    
-    # Cập nhật giá trị tốc độ dựa trên các phím chữ (w, s, a, d)
-    for char, action_func in CHAR_ACTIONS.items():
-        if char in CHARS:
-            vel = action_func(vel)
-    
-    # Tính toán vận tốc dựa trên các phím mũi tên
-    return_vel = np.zeros(2)
-    for special, action_func in SPECIALS_ACTIONS.items():
-        if special in SPECIALS:
-            return_vel = action_func(return_vel, vel)
-    
-    # Hiển thị thông tin
-    if CHARS or SPECIALS:
-        print(f"Tốc độ: {vel} | Vận tốc áp dụng: {return_vel}")
-    
-    # Tạo và gửi thông điệp Twist
-    msg = Twist()
-    msg.linear.x = return_vel[0]
-    msg.angular.z = return_vel[1]
-    cmd_vel_pub.publish(msg)
+            # Điều khiển tốc độ tuyến tính
+            if key == 'w':  # Đi thẳng
+                left_speed = -self.linear_speed
+                right_speed = -self.linear_speed
+            elif key == 's':  # Đi lùi
+                left_speed = self.linear_speed
+                right_speed = self.linear_speed
+            elif key == 'a':  # Quay trái
+                left_speed = self.angular_speed
+                right_speed = -self.angular_speed
+            elif key == 'd':  # Quay phải
+                left_speed = -self.angular_speed
+                right_speed = self.angular_speed
+            elif key == 'x':  # Dừng
+                left_speed = 0.0
+                right_speed = 0.0
+            elif key == 'f':  # Dừng và thoát
+                left_speed = 0.0
+                right_speed = 0.0
+                self.pub_left.publish(left_speed)
+                self.pub_right.publish(right_speed)
+                rospy.loginfo("Dừng robot và thoát")
+                break
+            elif key == 'q':  # Tăng tốc độ tiến/lùi
+                self.linear_speed = min(self.linear_speed + self.speed_step, self.max_speed)
+                rospy.loginfo(f"Tốc độ tiến/lùi: {self.linear_speed:.2f}")
+                continue  # Không cần gửi lệnh vận tốc vì không thay đổi trạng thái di chuyển
+            elif key == 'z':  # Giảm tốc độ tiến/lùi
+                self.linear_speed = max(self.linear_speed - self.speed_step, 0.0)
+                rospy.loginfo(f"Tốc độ tiến/lùi: {self.linear_speed:.2f}")
+                continue
+            elif key == 'e':  # Tăng tốc độ quay
+                self.angular_speed = min(self.angular_speed + self.speed_step, self.max_speed)
+                rospy.loginfo(f"Tốc độ quay: {self.angular_speed:.2f}")
+                continue
+            elif key == 'c':  # Giảm tốc độ quay
+                self.angular_speed = max(self.angular_speed - self.speed_step, 0.0)
+                rospy.loginfo(f"Tốc độ quay: {self.angular_speed:.2f}")
+                continue
+            else:
+                continue  # Nếu không nhấn phím hợp lệ, bỏ qua vòng lặp này
 
-def display_instructions():
-    """Hiển thị hướng dẫn sử dụng"""
-    print("""
-HƯỚNG DẪN ĐIỀU KHIỂN ROBOT
----------------------------
-Điều khiển chuyển động:
-  MŨI TÊN LÊN/XUỐNG: tiến/lùi
-  MŨI TÊN TRÁI/PHẢI: rẽ trái/phải
-  
-Điều chỉnh tốc độ:
-  W/S: tăng/giảm tốc độ tuyến tính
-  A/D: tăng/giảm tốc độ góc
-  
-Kết thúc:
-  ESC: thoát chương trình
-  
-Robot sẽ dừng lại khi không có phím mũi tên nào được nhấn.
----------------------------
-""")
+            # Gửi lệnh vận tốc
+            self.pub_left.publish(left_speed)
+            self.pub_right.publish(right_speed)
+
+            # Hiển thị trạng thái
+            rospy.loginfo(f"Left: {left_speed:.2f}, Right: {right_speed:.2f}")
+
+            rospy.sleep(0.1)  # Tránh đọc phím quá nhanh
 
 if __name__ == "__main__":
-    # Khởi tạo node ROS
-    rospy.init_node('robot_teleop_keyboard_pynput')
-    
-    # Tạo publisher để gửi lệnh điều khiển
-    cmd_vel_topic = rospy.get_param('~cmd_vel_topic', '/cmd_vel')
-    cmd_vel_pub = rospy.Publisher(cmd_vel_topic, Twist, queue_size=5)
-    
-    # Hiển thị hướng dẫn
-    display_instructions()
-    
-    # Khởi động listener bắt sự kiện bàn phím
-    with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
-        try:
-            rospy.loginfo(f"Đã khởi động điều khiển bàn phím trên topic: {cmd_vel_topic}")
-            
-            # Vòng lặp chờ cho đến khi có tín hiệu shutdown
-            rate = rospy.Rate(10)  # 10Hz
-            while not rospy.is_shutdown() and listener.running:
-                rate.sleep()
-                
-        except rospy.ROSInterruptException:
-            pass
-        
-        finally:
-            # Dừng robot khi thoát
-            stop_msg = Twist()
-            cmd_vel_pub.publish(stop_msg)
-            rospy.loginfo("Đã dừng robot và thoát chương trình")
+    try:
+        controller = KeyboardControl()
+        controller.run()
+    except rospy.ROSInterruptException:
+        pass

@@ -56,18 +56,11 @@
                 r="0.175" g="0.175" b="0.175" a="1.0"
                 x2="0.00243663" y2="4.16334e-17" z2="0.0391321" roll2="0" pitch2="0" yaw2="0"/>
 
-    <link name="world"/>
-
     <gazebo reference="than_xe">
         <material>Gazebo/DarkGray</material>
         <mu1>0.2</mu1>
         <mu2>0.2</mu2>
     </gazebo>
-
-    <xacro:joint joint_name="world_than_xe" type="fixed"
-                 x1="0" y1="0" z1="0" roll1="0" pitch1="0" yaw1="0"
-                 parent_link="world"
-                 child_link="than_xe"/>
 
     <xacro:include filename="arm_controller.xacro"/>
     <xacro:include filename="base_controller.xacro"/>

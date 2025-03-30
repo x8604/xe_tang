@@ -19,8 +19,8 @@
             <camera>
                 <horizontal_fov>1.3962634</horizontal_fov>
                 <image>
-                    <width>800</width>
-                    <height>800</height>
+                    <width>1000</width>
+                    <height>1000</height>
                     <format>R8G8B8</format>
                 </image>
                 <clip>
@@ -53,12 +53,10 @@
     <xacro:joint joint_name="than_xe_camera" type="fixed"
                  x1="0.151437" y1="3.96457e-17" z1="0.0991321" roll1="-1.5708" pitch1="0" yaw1="1.5708"
                  parent_link="than_xe"
-                 child_link="camera"
-                 x2="0" y2="0" z2="1"/>
+                 child_link="camera"/>
 
     <xacro:joint joint_name="camera_camera_optical" type="fixed"
                  x1="0" y1="0" z1="0" roll1="1.5708" pitch1="1.5708" yaw1="0"
                  parent_link="camera"
-                 child_link="camera_optical"
-                 x2="0" y2="0" z2="1"/>
+                 child_link="camera_optical"/>
 </robot>

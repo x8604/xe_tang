@@ -29,8 +29,7 @@
 
   <node name="arm_controller_spawner" pkg="controller_manager" type="spawner"
         respawn="true" output="screen" ns="/arm"
-        args="joint_state_controller
-              joint1_position_controller
+        args="joint1_position_controller
               joint2_position_controller" />
 
   <node name="base_controller_spawner" pkg="controller_manager" type="spawner"

@@ -9,23 +9,16 @@
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
-  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
-
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find xe_tang)/config/xe_tang.rviz" required="true" />
 
-  <node name="banh_xe_4" pkg="rqt_robot_steering" type="rqt_robot_steering">
-    <param name="default_topic" value="banh_xe_4_controller/cmd" />
-  </node>
-
-  <node name="banh_xe_2" pkg="rqt_robot_steering" type="rqt_robot_steering">
-    <param name="default_topic" value="banh_xe_2_controller/cmd" />
+  <node name="steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+    <param name="default_topic" value="diff_drive_controller/cmd_vel" />
   </node>
 
   <node name="xe_tang_controller_spawner" pkg="controller_manager" type="spawner"
         respawn="true" output="screen"
         args="joint_state_controller
-              banh_xe_4_controller
-              banh_xe_2_controller" />
+              diff_drive_controller" />
 </launch>

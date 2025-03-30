@@ -30,5 +30,5 @@
   <node name="controller" pkg="controller_manager" type="spawner"
         args="joint_state_controller
               banh_4_controller
-              banh_2_controller"
+              banh_2_controller" />
 </launch>

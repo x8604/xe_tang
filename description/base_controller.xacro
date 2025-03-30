@@ -104,31 +104,31 @@
                  parent_link="than_xe"
                  child_link="xich_2"/>
 
-    <transmission name="tran_left_wheel">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="than_xe_banh_1">
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="left_wheel_motor">
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
     <transmission name="tran_right_wheel">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="than_xe_banh_2">
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
         </joint>
         <actuator name="right_wheel_motor">
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="tran_left_wheel">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="than_xe_banh_4">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="left_wheel_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
 
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-        <robotNamespace>/xe_tang</robotNamespace>
+            <robotNamespace>/xe_tang</robotNamespace>
         </plugin>
     </gazebo>
 </robot>

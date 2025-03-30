@@ -91,7 +91,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
         khau_1:
           Alpha: 1
           Show Axes: false
@@ -117,6 +116,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         xich_1:
           Alpha: 1
           Show Axes: false
@@ -218,7 +221,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.8963440656661987
+      Distance: 1.6687827110290527
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1

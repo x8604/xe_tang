@@ -12,9 +12,9 @@ class KeyboardControl:
 
         self.pub_cmd_vel = rospy.Publisher('/diff_drive_controller/cmd_vel', Twist, queue_size=10)
 
-        self.max_linear_speed = 1.0
-        self.max_angular_speed = 2.0
-        self.speed_step = 0.1
+        self.max_linear_speed = 10.0
+        self.max_angular_speed = 10.0
+        self.speed_step = 0.5
 
         self.linear_speed = 0.0
         self.angular_speed = 0.0

@@ -1,12 +1,6 @@
 <launch>
   <rosparam command="load" file="$(find xe_tang)/config/controller.yaml" />
 
-  <node name="xe_tang_controller_spawner" pkg="controller_manager" type="spawner"
-        respawn="true" output="screen"
-        args="joint_state_controller
-              banh_4_controller
-              banh_2_controller" />
-
   <include file="$(find gazebo_ros)/launch/empty_world.launch" />
 
   <param name="robot_description" command="$(find xacro)/xacro $(find xe_tang)/description/xe_tang.urdf.xacro" />
@@ -24,4 +18,10 @@
   <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
     <param name="default_topic" value="/xe_tang/mobile_base_controller/cmd_vel"/>
   </node>
+
+  <node name="xe_tang_controller_spawner" pkg="controller_manager" type="spawner"
+        respawn="true" output="screen"
+        args="joint_state_controller
+              banh_4_controller
+              banh_2_controller" />
 </launch>

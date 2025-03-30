@@ -28,7 +28,7 @@
   </node>
 
   <node name="arm_controller_spawner" pkg="controller_manager" type="spawner"
-        respawn="true" output="screen" ns="/arm"
+        respawn="true" output="screen"
         args="joint1_position_controller
               joint2_position_controller" />
 

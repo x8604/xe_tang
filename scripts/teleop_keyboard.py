@@ -8,8 +8,8 @@ class KeyboardControl:
     def __init__(self):
         rospy.init_node('keyboard_control')
         self.pub_base = rospy.Publisher('/diff_drive_controller/cmd_vel', Twist, queue_size=10)
-        self.pub_joint1 = rospy.Publisher('/arm/joint1_position_controller/command', Float64, queue_size=10)
-        self.pub_joint2 = rospy.Publisher('/arm/joint2_position_controller/command', Float64, queue_size=10)
+        self.pub_joint1 = rospy.Publisher('/joint1_position_controller/command', Float64, queue_size=10)
+        self.pub_joint2 = rospy.Publisher('/joint2_position_controller/command', Float64, queue_size=10)
         
         self.twist = Twist()
         self.linear_speed = 5.0

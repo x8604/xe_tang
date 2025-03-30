@@ -45,7 +45,7 @@
                  x2="0" y2="0" z2="1" effort="10" velocity="10" lower="-${PI}" upper="${PI}"/>
 
     <plugin name="arm_control" filename="libgazebo_ros_control.so">
-        <robotNamespace>/arm</robotNamespace>
+        <robotNamespace>/</robotNamespace>
     </plugin>
 
     <xacro:transmission joint_name="khop_joint" actuator_name="lower_motor"/>

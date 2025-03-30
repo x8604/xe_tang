@@ -72,6 +72,5 @@
     <xacro:include filename="arm_controller.xacro"/>
     <xacro:include filename="base_controller.xacro"/>
     <xacro:include filename="camera.xacro"/>
-    
     <xacro:include filename="lidar.xacro"/>
 </robot>

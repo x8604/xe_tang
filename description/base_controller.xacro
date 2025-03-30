@@ -13,8 +13,7 @@
                  x1="-0.127563" y1="0.14" z1="0.0641321" roll1="-1.5708" pitch1="1.42583" yaw1="3.14159"
                  parent_link="than_xe"
                  child_link="banh_xe_1"
-                 x2="0" y2="0" z2="1"
-                 effort="10" velocity="10"/>
+                 x2="0" y2="0" z2="1" effort="10" velocity="10"/>
 
     <xacro:link link_name="banh_xe_2"
                 x1="-1.63473e-19" y1="-9.18731e-18" z1="0.00430301" roll1="0" pitch1="0" yaw1="0"
@@ -29,8 +28,7 @@
                  x1="0.132437" y1="0.14" z1="0.0641321" roll1="-1.5708" pitch1="1.05145" yaw1="3.14159"
                  parent_link="than_xe"
                  child_link="banh_xe_2"
-                 x2="0" y2="0" z2="1"
-                 effort="10" velocity="10"/>
+                 x2="0" y2="0" z2="1" effort="10" velocity="10"/>
 
     <xacro:link link_name="banh_xe_3"
                 x1="-1.63473e-19" y1="8.15992e-18" z1="0.00430301" roll1="0" pitch1="0" yaw1="0"
@@ -45,8 +43,7 @@
                  x1="-0.127563" y1="-0.14" z1="0.0641321" roll1="-1.5708" pitch1="0.295982" yaw1="0"
                  parent_link="than_xe"
                  child_link="banh_xe_3"
-                 x2="0" y2="0" z2="1"
-                 effort="10" velocity="10"/>
+                 x2="0" y2="0" z2="1" effort="10" velocity="10"/>
 
     <xacro:link link_name="banh_xe_4"
                 x1="2.75921e-17" y1="4.69047e-18" z1="0.00430301" roll1="0" pitch1="0" yaw1="0"
@@ -61,8 +58,7 @@
                  x1="0.132437" y1="-0.14" z1="0.0641321" roll1="1.5708" pitch1="0.033338" yaw1="3.14159"
                  parent_link="than_xe"
                  child_link="banh_xe_4"
-                 x2="0" y2="0" z2="1"
-                 effort="10" velocity="10"/>
+                 x2="0" y2="0" z2="1" effort="10" velocity="10"/>
 
     <xacro:link link_name="xich_1"
                 x1="3.10096e-16" y1="-4.79297e-17" z1="-0.03" roll1="0" pitch1="0" yaw1="0"

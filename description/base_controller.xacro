@@ -9,7 +9,7 @@
 
     <xacro:gazebo reference="banh_xe_1" material="Gazebo/Gray" mu1="0.2" mu2="0.2"/>
 
-    <xacro:joint joint_name="than_xe_banh_1" type="continuous"
+    <xacro:joint joint_name="banh_xe_1_joint" type="continuous"
                  x1="-0.127563" y1="0.14" z1="0.0641321" roll1="-1.5708" pitch1="1.42583" yaw1="3.14159"
                  parent_link="than_xe"
                  child_link="banh_xe_1"
@@ -24,7 +24,7 @@
     
     <xacro:gazebo reference="banh_xe_2" material="Gazebo/Gray" mu1="0.2" mu2="0.2"/>
 
-    <xacro:joint joint_name="than_xe_banh_2" type="continuous"
+    <xacro:joint joint_name="banh_xe_2_joint" type="continuous"
                  x1="0.132437" y1="0.14" z1="0.0641321" roll1="-1.5708" pitch1="1.05145" yaw1="3.14159"
                  parent_link="than_xe"
                  child_link="banh_xe_2"
@@ -39,7 +39,7 @@
     
     <xacro:gazebo reference="banh_xe_3" material="Gazebo/Gray" mu1="0.2" mu2="0.2"/>
 
-    <xacro:joint joint_name="than_xe_banh_3" type="continuous"
+    <xacro:joint joint_name="banh_xe_3_joint" type="continuous"
                  x1="-0.127563" y1="-0.14" z1="0.0641321" roll1="-1.5708" pitch1="0.295982" yaw1="0"
                  parent_link="than_xe"
                  child_link="banh_xe_3"
@@ -54,7 +54,7 @@
     
     <xacro:gazebo reference="banh_xe_4" material="Gazebo/Gray" mu1="0.2" mu2="0.2"/>
 
-    <xacro:joint joint_name="than_xe_banh_4" type="continuous"
+    <xacro:joint joint_name="banh_xe_4_joint" type="continuous"
                  x1="0.132437" y1="-0.14" z1="0.0641321" roll1="1.5708" pitch1="0.033338" yaw1="3.14159"
                  parent_link="than_xe"
                  child_link="banh_xe_4"
@@ -69,7 +69,7 @@
 
     <xacro:gazebo reference="xich_1" material="Gazebo/FlatBlack" mu1="0.2" mu2="0.2"/>
 
-    <xacro:joint joint_name="than_xe_xich_1" type="fixed"
+    <xacro:joint joint_name="xich_1_joint" type="fixed"
                  x1="0.0025" y1="-0.105" z1="0.064" roll1="-1.5708" pitch1="1.82546e-16" yaw1="0"
                  parent_link="than_xe"
                  child_link="xich_1"/>
@@ -83,29 +83,10 @@
     
     <xacro:gazebo reference="xich_2" material="Gazebo/FlatBlack" mu1="0.2" mu2="0.2"/>
 
-    <xacro:joint joint_name="than_xe_xich_2" type="fixed"
+    <xacro:joint joint_name="xich_2_joint" type="fixed"
                  x1="-0.0406" y1="0.105" z1="0.0091" roll1="-1.5708" pitch1="0" yaw1="3.14159"
                  parent_link="than_xe"
                  child_link="xich_2"/>
-
-    <gazebo>
-        <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
-            <updateRate>50</updateRate>
-            <leftJoint>than_xe_banh_4</leftJoint>
-            <rightJoint>than_xe_banh_2</rightJoint>
-            <wheelSeparation>0.135</wheelSeparation>
-            <wheelDiameter>0.1</wheelDiameter>
-            <commandTopic>cmd_vel</commandTopic>
-            <odometryTopic>odom</odometryTopic>
-            <odometryFrame>odom</odometryFrame>
-            <robotBaseFrame>than_xe</robotBaseFrame>
-            <odometrySource>0</odometrySource>
-            <publishWheelTF>true</publishWheelTF>
-            <publishOdom>true</publishOdom>
-            <publishWheelJointState>true</publishWheelJointState>
-            <legacyMode>false</legacyMode>
-        </plugin>
-    </gazebo>
 
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">

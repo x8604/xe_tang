@@ -1,4 +1,9 @@
 <launch>
+  <rosparam file="$(find xe_tang)/config/controller.yaml" command="load"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" 
+        args="joint_state_controller banh_4_controller banh_2_controller"/>
+
   <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
 
   <param name="robot_description" command="$(find xacro)/xacro $(find xe_tang)/description/xe_tang.urdf.xacro"/>

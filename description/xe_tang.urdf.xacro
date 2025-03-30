@@ -47,6 +47,8 @@
         </joint>
     </xacro:macro>
 
+    <xacro:property name="PI" value="3.141592653589793"/>
+
     <xacro:link link_name="than_xe"
                 x1="0.00402455" y1="4.22475e-17" z1="0.0886727" roll1="0" pitch1="0" yaw1="0"
                 mass="7.43294"

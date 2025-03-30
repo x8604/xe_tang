@@ -11,6 +11,8 @@
 
     <gazebo reference="camera">
         <material>Gazebo/Green</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
 
     <gazebo reference="camera_optical">

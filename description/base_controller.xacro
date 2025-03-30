@@ -9,6 +9,8 @@
 
     <gazebo reference="banh_xe_1">
         <material>Gazebo/Gray</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
 
     <xacro:joint joint_name="than_xe_banh_1" type="revolute"
@@ -27,6 +29,8 @@
     
     <gazebo reference="banh_xe_2">
         <material>Gazebo/Gray</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
 
     <xacro:joint joint_name="than_xe_banh_2" type="revolute"
@@ -45,6 +49,8 @@
     
     <gazebo reference="banh_xe_3">
         <material>Gazebo/Gray</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
 
     <xacro:joint joint_name="than_xe_banh_3" type="revolute"
@@ -63,6 +69,8 @@
     
     <gazebo reference="banh_xe_4">
         <material>Gazebo/Gray</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
 
     <xacro:joint joint_name="than_xe_banh_4" type="revolute"
@@ -81,6 +89,8 @@
     
     <gazebo reference="xich_1">
         <material>Gazebo/FlatBlack</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
 
     <xacro:joint joint_name="than_xe_xich_1" type="fixed"
@@ -97,6 +107,8 @@
     
     <gazebo reference="xich_2">
         <material>Gazebo/FlatBlack</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
 
     <xacro:joint joint_name="than_xe_xich_2" type="fixed"

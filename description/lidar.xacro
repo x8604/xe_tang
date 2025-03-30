@@ -9,6 +9,8 @@
     
     <gazebo reference="lidar">
         <material>Gazebo/Black</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
         
         <sensor name="laser" type="ray">
             <visualize>true</visualize>

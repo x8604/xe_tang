@@ -60,6 +60,8 @@
 
     <gazebo reference="than_xe">
         <material>Gazebo/DarkGray</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
 
     <xacro:joint joint_name="world_than_xe" type="fixed"

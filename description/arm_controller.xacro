@@ -9,6 +9,8 @@
     
     <gazebo reference="khau_1">
         <material>Gazebo/White</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
 
     <xacro:joint joint_name="than_xe_khau_1" type="fixed"
@@ -25,6 +27,8 @@
     
     <gazebo reference="khop">
         <material>Gazebo/SkyBlue</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
 
     <xacro:joint joint_name="khau_1_khop" type="prismatic"
@@ -43,6 +47,8 @@
     
     <gazebo reference="khau_2">
         <material>Gazebo/White</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
     </gazebo>
 
     <xacro:joint joint_name="khop_khau_2" type="revolute"

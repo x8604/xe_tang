@@ -20,8 +20,8 @@
                     <horizontal>
                         <samples>180</samples>
                         <resolution>1.000000</resolution>
-                        <min_angle>-{PI/2}</min_angle>
-                        <max_angle>{PI/2}</max_angle>
+                        <min_angle>1.5708</min_angle>
+                        <max_angle>${PI}</max_angle>
                     </horizontal>
                 </scan>
                 <range>

@@ -15,8 +15,12 @@
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find xe_tang)/config/xe_tang.rviz" required="true" />
 
-  <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-    <param name="default_topic" value="/xe_tang/mobile_base_controller/cmd_vel"/>
+  <node name="banh_xe_4" pkg="rqt_robot_steering" type="rqt_robot_steering">
+    <param name="default_topic" value="banh_xe_4_controller/cmd" />
+  </node>
+
+  <node name="banh_xe_2" pkg="rqt_robot_steering" type="rqt_robot_steering">
+    <param name="default_topic" value="banh_xe_2_controller/cmd" />
   </node>
 
   <node name="xe_tang_controller_spawner" pkg="controller_manager" type="spawner"

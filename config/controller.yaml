@@ -2,12 +2,12 @@ joint_state_controller:
   type: joint_state_controller/JointStateController
   publish_rate: 50
 
-banh_4_controller:
+banh_xe_4_controller:
   type: velocity_controllers/JointVelocityController
   joint: banh_xe_4_joint
   pid: {p: 10.0, i: 0.1, d: 10.0}
 
-banh_2_controller:
+banh_xe_2_controller:
   type: velocity_controllers/JointVelocityController
   joint: banh_xe_2_joint
   pid: {p: 10.0, i: 0.1, d: 10.0}

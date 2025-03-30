@@ -22,6 +22,6 @@
   <node name="xe_tang_controller_spawner" pkg="controller_manager" type="spawner"
         respawn="true" output="screen"
         args="joint_state_controller
-              banh_4_controller
-              banh_2_controller" />
+              banh_xe_4_controller
+              banh_xe_2_controller" />
 </launch>

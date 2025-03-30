@@ -9,11 +9,11 @@ import termios
 class KeyboardControl:
     def __init__(self):
         # Khởi tạo node ROS
-        rospy.init_node('keyboard_control', anonymous=True)
+        rospy.init_node('keyboard_control')
 
         # Publisher cho các lệnh vận tốc bánh xe
-        self.pub_left = rospy.Publisher('/banh_4_joint/command', Float64, queue_size=10)
-        self.pub_right = rospy.Publisher('/banh_2_joint/command', Float64, queue_size=10)
+        self.pub_left = rospy.Publisher('/banh_xe_4_controller/command', Float64, queue_size=10)
+        self.pub_right = rospy.Publisher('/banh_xe_2_controller/command', Float64, queue_size=10)
 
         # Tốc độ giới hạn
         self.max_speed = 5.0  # Giới hạn vận tốc tối đa (radian/s)

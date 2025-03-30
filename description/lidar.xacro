@@ -42,7 +42,7 @@
         </sensor>
     </gazebo>
 
-    <xacro:joint joint_name="than_xe_lidar" type="revolute"
+    <xacro:joint joint_name="lidar_joint" type="revolute"
                  x1="-0.0675634" y1="4.37765e-17" z1="0.138132" roll1="3.14159" pitch1="0" yaw1="0"
                  parent_link="than_xe"
                  child_link="lidar"

@@ -9,7 +9,7 @@
     
     <xacro:gazebo reference="khau_1" material="Gazebo/White" mu1="0.2" mu2="0.2"/>
 
-    <xacro:joint joint_name="than_xe_khau_1" type="fixed"
+    <xacro:joint joint_name="khau_1_joint" type="fixed"
                  x1="0.0649366" y1="4.67039e-17" z1="0.138132" roll1="3.14159" pitch1="0" yaw1="0"
                  parent_link="than_xe"
                  child_link="khau_1"/>
@@ -23,7 +23,7 @@
 
     <xacro:gazebo reference="khop" material="Gazebo/SkyBlue" mu1="0.2" mu2="0.2"/>
 
-    <xacro:joint joint_name="khau_1_khop" type="prismatic"
+    <xacro:joint joint_name="khop_joint" type="prismatic"
                  x1="0" y1="2.80737e-25" z1="-0.210059" roll1="-3.14159" pitch1="6.59901e-17" yaw1="-1.96037e-29"
                  parent_link="khau_1"
                  child_link="khop"
@@ -38,7 +38,7 @@
 
     <xacro:gazebo reference="khau_2" material="Gazebo/White" mu1="0.2" mu2="0.2"/>
 
-    <xacro:joint joint_name="khop_khau_2" type="revolute"
+    <xacro:joint joint_name="khau_2_joint" type="revolute"
                  x1="0" y1="8.97939e-27" z1="0" roll1="-9.25178e-17" pitch1="2.59191e-16" yaw1="-3.12038"
                  parent_link="khop"
                  child_link="khau_2"

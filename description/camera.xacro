@@ -48,12 +48,12 @@
         </sensor>
     </gazebo>
 
-    <xacro:joint joint_name="than_xe_camera" type="fixed"
+    <xacro:joint joint_name="camera_joint" type="fixed"
                  x1="0.151437" y1="3.96457e-17" z1="0.0991321" roll1="-1.5708" pitch1="0" yaw1="1.5708"
                  parent_link="than_xe"
                  child_link="camera"/>
 
-    <xacro:joint joint_name="camera_camera_optical" type="fixed"
+    <xacro:joint joint_name="camera_optical_joint" type="fixed"
                  x1="0" y1="0" z1="0" roll1="1.5708" pitch1="1.5708" yaw1="0"
                  parent_link="camera"
                  child_link="camera_optical"/>

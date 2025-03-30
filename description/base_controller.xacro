@@ -94,6 +94,6 @@
         </plugin>
     </gazebo>
 
-    <xacro:transmission joint_name="than_xe_banh_4" actuator_name="left_wheel_motor"/>
-    <xacro:transmission joint_name="than_xe_banh_2" actuator_name="right_wheel_motor"/>
+    <xacro:transmission joint_name="banh_xe_4_joint" actuator_name="left_wheel_motor"/>
+    <xacro:transmission joint_name="banh_xe_2_joint" actuator_name="right_wheel_motor"/>
 </robot>

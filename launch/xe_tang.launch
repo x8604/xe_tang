@@ -1,24 +1,27 @@
 <launch>
-  <rosparam command="load" file="$(find xe_tang)/config/controller.yaml" />
+  <rosparam command="load" file="$(find xe_tang)/config/arm_controller.yaml"/>
+  <rosparam command="load" file="$(find xe_tang)/config/base_controller.yaml"/>
 
-  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
 
-  <param name="robot_description" command="$(find xacro)/xacro $(find xe_tang)/description/xe_tang.urdf.xacro" />
+  <param name="robot_description" 
+         command="$(find xacro)/xacro $(find xe_tang)/description/xe_tang.urdf.xacro"/>
 
-  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -model xe_tang -param robot_description" />
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" 
+        args="-urdf -model xe_tang -param robot_description"/>
 
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find xe_tang)/config/xe_tang.rviz" required="true" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find xe_tang)/config/xe_tang.rviz" required="true"/>
 
   <node name="steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-    <param name="default_topic" value="diff_drive_controller/cmd_vel" />
+    <param name="default_topic" value="diff_drive_controller/cmd_vel"/>
   </node>
 
   <node name="xe_tang_controller_spawner" pkg="controller_manager" type="spawner"
         respawn="true" output="screen"
         args="joint_state_controller
-              diff_drive_controller" />
+              diff_drive_controller"/>
 </launch>

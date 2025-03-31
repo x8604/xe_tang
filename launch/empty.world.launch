@@ -1,8 +1,8 @@
 <launch>
-  <rosparam command="load" file="$(find xe_tang)/config/arm_controller.yaml" />
-  <rosparam command="load" file="$(find xe_tang)/config/base_controller.yaml" />
+  <rosparam command="load" file="$(find xe_tang)/config/arm_controller.yaml"/>
+  <rosparam command="load" file="$(find xe_tang)/config/base_controller.yaml"/>
 
-  <param name="/use_sim_time" value="true" />
+  <param name="/use_sim_time" value="true"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find xe_tang)/worlds/empty.world"/>
@@ -13,23 +13,25 @@
     <arg name="debug" value="false"/>
   </include>
 
-  <param name="robot_description" command="$(find xacro)/xacro $(find xe_tang)/description/xe_tang.urdf.xacro" />
+  <param name="robot_description"
+         command="$(find xacro)/xacro $(find xe_tang)/description/xe_tang.urdf.xacro"/>
 
-  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -model xe_tang -param robot_description" />
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" 
+        args="-urdf -model xe_tang -param robot_description"/>
 
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find xe_tang)/config/xe_tang.rviz" required="true" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find xe_tang)/config/xe_tang.rviz" required="true"/>
 
   <node name="arm_controller_spawner" pkg="controller_manager" type="spawner"
         respawn="true" output="screen"
         args="joint1_position_controller
-              joint2_position_controller" />
+              joint2_position_controller"/>
 
   <node name="base_controller_spawner" pkg="controller_manager" type="spawner"
         respawn="true" output="screen"
         args="joint_state_controller
-              diff_drive_controller" />
+              diff_drive_controller"/>
 </launch>

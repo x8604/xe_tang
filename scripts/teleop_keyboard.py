@@ -12,8 +12,8 @@ class KeyboardControl:
         self.pub_joint2 = rospy.Publisher('/joint2_position_controller/command', Float64, queue_size=10)
         
         self.twist = Twist()
-        self.linear_speed = 5.0
-        self.angular_speed = 5.0
+        self.linear_speed = 10.0
+        self.angular_speed = 10.0
         
         self.joint1_pos = 0.0 
         self.joint2_pos = 0.0

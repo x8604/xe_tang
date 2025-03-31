@@ -17,9 +17,9 @@ class KeyboardControl:
         
         self.joint1_pos = 0.0 
         self.joint2_pos = 0.0
-        self.joint_step = 0.1
+        self.joint_step = 0.05
 
-        self.joint1_min = 0.0
+        self.joint1_min = 0
         self.joint1_max = 0.5
 
     def get_key(self):

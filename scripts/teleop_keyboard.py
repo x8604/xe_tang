@@ -21,8 +21,6 @@ class KeyboardControl:
 
         self.joint1_min = 0.0
         self.joint1_max = 0.5
-        self.joint2_min = -1.57
-        self.joint2_max = 1.57
 
     def get_key(self):
         fd = sys.stdin.fileno()
@@ -45,7 +43,6 @@ class KeyboardControl:
         while not rospy.is_shutdown():
             key = self.get_key()
             
-            # Base control
             if key == 'w':
                 self.twist.linear.x = self.linear_speed
                 self.twist.angular.z = 0.0
@@ -61,28 +58,29 @@ class KeyboardControl:
             elif key == 'x':
                 self.twist.linear.x = 0.0
                 self.twist.angular.z = 0.0
-            elif key == 'i':
+            else:
+                self.twist.linear.x = 0.0
+                self.twist.angular.z = 0.0
+
+            if key == 'i':
                 self.joint1_pos = self.clamp(self.joint1_pos + self.joint_step, self.joint1_min, self.joint1_max)
             elif key == 'k':
                 self.joint1_pos = self.clamp(self.joint1_pos - self.joint_step, self.joint1_min, self.joint1_max)
             elif key == 'j':
-                self.joint2_pos = self.clamp(self.joint2_pos - self.joint_step, self.joint2_min, self.joint2_max)
+                self.joint2_pos -= self.joint_step
             elif key == 'l':
-                self.joint2_pos = self.clamp(self.joint2_pos + self.joint_step, self.joint2_min, self.joint2_max)
+                self.joint2_pos += self.joint_step
             
-            # Exit
             elif key == 'f':
                 self.twist.linear.x = 0.0
                 self.twist.angular.z = 0.0
                 self.pub_base.publish(self.twist)
                 break
             
-            # Publish commands
             self.pub_base.publish(self.twist)
             self.pub_joint1.publish(self.joint1_pos)
             self.pub_joint2.publish(self.joint2_pos)
             
-            # Log current state
             rospy.loginfo(f"Base - Linear: {self.twist.linear.x}, Angular: {self.twist.angular.z}")
             rospy.loginfo(f"Arm - Joint1: {self.joint1_pos:.2f}m, Joint2: {self.joint2_pos:.2f}rad")
             

@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="xe-tang">
-    <xacro:property name="PI" value="3.141592653589793"/>
-
     <xacro:macro name="link" params="link_name
                                      x1 y1 z1 roll1 pitch1 yaw1
                                      mass

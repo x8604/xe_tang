@@ -38,16 +38,16 @@
 
     <xacro:gazebo reference="khau_2" material="Gazebo/White" mu1="0.2" mu2="0.2"/>
 
-    <xacro:joint joint_name="khau_2_joint" type="revolute"
+    <xacro:joint joint_name="khau_2_joint" type="continuous"
                  x1="0" y1="8.97939e-27" z1="0" roll1="-9.25178e-17" pitch1="2.59191e-16" yaw1="-3.12038"
                  parent_link="khop"
                  child_link="khau_2"
-                 x2="0" y2="0" z2="1" effort="10" velocity="10" lower="-${PI}" upper="${PI}"/>
+                 x2="0" y2="0" z2="1" effort="10" velocity="10"/>
 
     <plugin name="arm_control" filename="libgazebo_ros_control.so">
         <robotNamespace>/</robotNamespace>
     </plugin>
 
-    <xacro:arm_transmission joint_name="khop_joint" actuator_name="lower_motor"/>
-    <xacro:arm_transmission joint_name="khau_2_joint" actuator_name="upper_motor"/>
+    <xacro:arm_transmission joint_name="khop_joint" actuator_name="lower_motor" hwInterface="hardware_interface/VelocityJointInterface"/>
+    <xacro:arm_transmission joint_name="khau_2_joint" actuator_name="upper_motor" hwInterface="hardware_interface/EffortJointInterface"/>
 </robot>

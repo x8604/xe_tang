@@ -27,7 +27,7 @@
                  x1="0" y1="2.80737e-25" z1="-0.210059" roll1="-3.14159" pitch1="6.59901e-17" yaw1="-1.96037e-29"
                  parent_link="khau_1"
                  child_link="khop"
-                 x2="0" y2="0" z2="1" effort="100" velocity="10" lower="-0.135059" upper="0.234941"/>
+                 x2="0" y2="0" z2="1" effort="100" velocity="10" lower="-0.135059" upper="0.44"/>
 
     <xacro:link link_name="khau_2"
                 x1="0.228819" y1="-6.22477e-10" z1="-0.0150176" roll1="0" pitch1="0" yaw1="0"

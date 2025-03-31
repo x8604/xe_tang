@@ -1,6 +1,7 @@
 <launch>
   <rosparam command="load" file="$(find xe_tang)/config/arm_controller.yaml"/>
   <rosparam command="load" file="$(find xe_tang)/config/base_controller.yaml"/>
+  <rosparam command="load" file="$(find xe_tang)/config/pid_gains.yaml"/>
 
   <param name="/use_sim_time" value="true"/>
 

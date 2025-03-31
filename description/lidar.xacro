@@ -14,30 +14,26 @@
         
         <sensor name="laser" type="ray">
             <visualize>true</visualize>
-            <update_rate>5</update_rate>
+            <update_rate>30</update_rate>
             <ray>
                 <scan>
                     <horizontal>
                         <samples>360</samples>
                         <resolution>1</resolution>
-                        <min_angle>-3.14</min_angle>
-                        <max_angle>3.14</max_angle>
+                        <min_angle>0</min_angle>
+                        <max_angle>6.28319</max_angle>
                     </horizontal>
                 </scan>
                 <range>
-                    <min>0.120000</min>
-                    <max>3.5</max>
-                    <resolution>0.01</resolution>
+                    <min>0.12</min>
+                    <max>10</max>
+                    <resolution>0.015</resolution>
                 </range>
-                <noise>
-                    <type>gaussian</type>
-                    <mean>0.0</mean>
-                    <stddev>0.01</stddev>
-                </noise>
             </ray>
             <plugin name="laser_controller" filename="libgazebo_ros_laser.so">
                 <topicName>scan</topicName>
                 <frameName>lidar</frameName>
+                <gaussianNoise>0.01</gaussianNoise>
             </plugin>
         </sensor>
     </gazebo>

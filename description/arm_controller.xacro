@@ -48,6 +48,6 @@
         <robotNamespace>/</robotNamespace>
     </plugin>
 
-    <xacro:arm_transmission joint_name="khop_joint" actuator_name="lower_motor" hwInterface="hardware_interface/EffortJointInterface"/>
-    <xacro:arm_transmission joint_name="khau_2_joint" actuator_name="upper_motor" hwInterface="hardware_interface/EffortJointInterface"/>
+    <xacro:arm_transmission joint_name="khop_joint" actuator_name="lower_motor"/>
+    <xacro:arm_transmission joint_name="khau_2_joint" actuator_name="upper_motor"/>
 </robot>

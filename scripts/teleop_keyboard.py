@@ -36,9 +36,9 @@ class KeyboardControl:
         return max(min_val, min(value, max_val))
 
     def run(self):
-        rospy.loginfo("Base: w: Forward, s: Backward, a: Left, d: Right, x: Stop")
-        rospy.loginfo("Arm: i: Joint1 Up, k: Joint1 Down, j: Joint2 Left, l: Joint2 Right")
-        rospy.loginfo("f: Exit")
+        rospy.loginfo("Xe tăng: w: tiến, s: lùi, a: trái, d: phải, x: dừng")
+        rospy.loginfo("Tay máy: i: nâng khớp trượt, k: hạ khớp trượt, j: quay phải khớp xoay, l: quay trái khớp xoay")
+        rospy.loginfo("f: thoát")
         rate = rospy.Rate(10)
         while not rospy.is_shutdown():
             key = self.get_key()
@@ -80,9 +80,6 @@ class KeyboardControl:
             self.pub_base.publish(self.twist)
             self.pub_joint1.publish(self.joint1_pos)
             self.pub_joint2.publish(self.joint2_pos)
-            
-            rospy.loginfo(f"Base - Linear: {self.twist.linear.x}, Angular: {self.twist.angular.z}")
-            rospy.loginfo(f"Arm - Joint1: {self.joint1_pos:.2f}m, Joint2: {self.joint2_pos:.2f}rad")
             
             rate.sleep()
 

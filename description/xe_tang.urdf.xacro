@@ -66,15 +66,15 @@
         </transmission>
     </xacro:macro>
 
-    <xacro:macro name="arm_transmission" params="joint_name actuator_name hwInterface">
+    <xacro:macro name="arm_transmission" params="joint_name actuator_name">
         <transmission name="${joint_name}_transmission">
             <type>transmission_interface/SimpleTransmission</type>
             <actuator name="${actuator_name}">
-                <hardwareInterface>${hwInterface}</hardwareInterface>
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
                 <mechanicalReduction>1</mechanicalReduction>
             </actuator>
             <joint name="${joint_name}">
-                <hardwareInterface>${hwInterface}</hardwareInterface>
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             </joint>
         </transmission>
     </xacro:macro>

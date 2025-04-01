@@ -40,6 +40,6 @@
 
     <xacro:joint joint_name="lidar_joint" type="fixed"
                  x1="-0.0675634" y1="4.37765e-17" z1="0.138132" roll1="3.14159" pitch1="0" yaw1="0"
-                 parent_link="than_xe"
+                 parent_link="base_link"
                  child_link="lidar"/>
 </robot>

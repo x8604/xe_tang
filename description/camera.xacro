@@ -50,7 +50,7 @@
 
     <xacro:joint joint_name="camera_joint" type="fixed"
                  x1="0.151437" y1="3.96457e-17" z1="0.0991321" roll1="-1.5708" pitch1="0" yaw1="1.5708"
-                 parent_link="than_xe"
+                 parent_link="base_link"
                  child_link="camera"/>
 
     <xacro:joint joint_name="camera_optical_joint" type="fixed"

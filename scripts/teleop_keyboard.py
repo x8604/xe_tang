@@ -7,11 +7,8 @@ from geometry_msgs.msg import Twist
 from std_msgs.msg import Float64
 import sys
 from select import select
-if sys.platform == 'win32':
-    import msvcrt
-else:
-    import termios
-    import tty
+import termios
+import tty
 
 msg = """
 Dieu khien xe:
@@ -26,8 +23,7 @@ k - ha
 j - quay trai
 l - quay phai
 
-q/z : tang/giam toc do xe 10%
-f : thoat chuong trinh
+f - thoat chuong trinh
 """
 
 moveBindings = {
@@ -42,11 +38,6 @@ jointBindings = {
     'k': (-1, 0),
     'j': (0, 1),
     'l': (0, -1),
-}
-
-speedBindings = {
-    'q': (1.1, 1.1),
-    'z': (0.9, 0.9),
 }
 
 class PublishThread(threading.Thread):
@@ -126,14 +117,11 @@ def getKey(settings, timeout):
     return key
 
 def saveTerminalSettings():
-    return None if sys.platform == 'win32' else termios.tcgetattr(sys.stdin)
+    return termios.tcgetattr(sys.stdin)
 
 def restoreTerminalSettings(old_settings):
-    if sys.platform != 'win32' and old_settings:
+    if old_settings:
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, old_settings)
-
-def vels(speed, turn):
-    return "Toc do hien tai:\tlinear %s\tangular %s" % (speed, turn)
 
 if __name__ == "__main__":
     settings = saveTerminalSettings()
@@ -156,7 +144,6 @@ if __name__ == "__main__":
         pub_thread.update(x, th, joint1_pos, joint2_pos, speed, turn)
 
         print(msg)
-        print(vels(speed, turn))
 
         while not rospy.is_shutdown():
             key = getKey(settings, key_timeout)

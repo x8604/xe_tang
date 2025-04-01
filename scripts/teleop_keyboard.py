@@ -31,22 +31,22 @@ f : thoat chuong trinh
 """
 
 moveBindings = {
-    'w': (1, 0),   # Tien
-    's': (-1, 0),  # Lui
-    'a': (0, 1),   # Quay trai
-    'd': (0, -1),  # Quay phai
+    'w': (1, 0),
+    's': (-1, 0),
+    'a': (0, 1),
+    'd': (0, -1),
 }
 
 jointBindings = {
-    'i': (1, 0),   # Nang joint1
-    'k': (-1, 0),  # Ha joint1
-    'j': (0, 1),  # Quay trai joint2
-    'l': (0, -1),   # Quay phai joint2
+    'i': (1, 0),
+    'k': (-1, 0),
+    'j': (0, 1),
+    'l': (0, -1),
 }
 
 speedBindings = {
-    'q': (1.1, 1.1),  # Tang toc do
-    'z': (0.9, 0.9),  # Giam toc do
+    'q': (1.1, 1.1),
+    'z': (0.9, 0.9),
 }
 
 class PublishThread(threading.Thread):

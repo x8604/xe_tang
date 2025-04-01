@@ -167,13 +167,6 @@ if __name__ == "__main__":
             elif key in jointBindings:
                 joint1_pos += jointBindings[key][0] * pub_thread.joint_step
                 joint2_pos += jointBindings[key][1] * pub_thread.joint_step
-            elif key in speedBindings:
-                speed *= speedBindings[key][0]
-                turn *= speedBindings[key][1]
-                print(vels(speed, turn))
-                if status == 14:
-                    print(msg)
-                status = (status + 1) % 15
             elif key == 'f' or key == '\x03':  # 'f' or Ctrl+C
                 break
             else:

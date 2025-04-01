@@ -27,10 +27,10 @@ f - thoat chuong trinh
 """
 
 moveBindings = {
-    'w': (1, 0),
-    's': (-1, 0),
-    'a': (0, 1),
-    'd': (0, -1),
+    'w': (0, 1),
+    's': (0, -1),
+    'a': (1, 0),
+    'd': (-1, 0)
 }
 
 jointBindings = {

@@ -82,6 +82,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         camera:
           Alpha: 1
           Show Axes: false
@@ -107,11 +112,6 @@ Visualization Manager:
           Show Trail: false
           Value: true
         lidar:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        than_xe:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -193,7 +193,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: than_xe
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -217,7 +217,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.8438926935195923
+      Distance: 1.3088960647583008
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -225,17 +225,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.22799798846244812
-        Y: -0.351685106754303
-        Z: 0.4569492042064667
+        X: -0.22637851536273956
+        Y: -0.4047252833843231
+        Z: 0.38291797041893005
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6153983473777771
+      Pitch: 0.3653985559940338
       Target Frame: <Fixed Frame>
-      Yaw: 4.218607425689697
+      Yaw: 4.1236042976379395
     Saved: ~
 Window Geometry:
   Displays:

@@ -33,6 +33,5 @@
         args="joint_state_controller
               diff_drive_controller"/>
 
-  <node name="teleop_keyboard" pkg="xe_tang" type="teleop_keyboard.py" output="screen"/>
   <node name="encoder_listener" pkg="xe_tang" type="encoder.py" output="screen"/>
 </launch>

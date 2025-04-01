@@ -6,8 +6,8 @@
         </plugin>
     </gazebo>
 
-    <xacro:base_transmission joint_name="banh_xe_4_joint" actuator_name="left_wheel_motor"/>
-    <xacro:base_transmission joint_name="banh_xe_3_joint" actuator_name="left_wheel_motor"/>
-    <xacro:base_transmission joint_name="banh_xe_2_joint" actuator_name="right_wheel_motor"/>
-    <xacro:base_transmission joint_name="banh_xe_1_joint" actuator_name="left_wheel_motor"/>
+    <xacro:base_transmission joint_name="banh_xe_4_joint" actuator_name="left_wheel_motor_1"/>
+    <xacro:base_transmission joint_name="banh_xe_3_joint" actuator_name="left_wheel_motor_2"/>
+    <xacro:base_transmission joint_name="banh_xe_2_joint" actuator_name="right_wheel_motor_1"/>
+    <xacro:base_transmission joint_name="banh_xe_1_joint" actuator_name="right_wheel_motor_2"/>
 </robot>

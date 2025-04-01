@@ -119,13 +119,10 @@ class PublishThread(threading.Thread):
         self.pub_base.publish(twist)
 
 def getKey(settings, timeout):
-    if sys.platform == 'win32':
-        key = msvcrt.getwch()
-    else:
-        tty.setraw(sys.stdin.fileno())
-        rlist, _, _ = select([sys.stdin], [], [], timeout)
-        key = sys.stdin.read(1) if rlist else ''
-        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+    tty.setraw(sys.stdin.fileno())
+    rlist, _, _ = select([sys.stdin], [], [], timeout)
+    key = sys.stdin.read(1) if rlist else ''
+    termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
     return key
 
 def saveTerminalSettings():

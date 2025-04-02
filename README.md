@@ -1,4 +1,4 @@
-Chạy: `roslaunch xe_tang empty.world.launch` và mở tab mới chạy `rosrun xe_tang teleop_keyboard.py` 
+Chạy: `roslaunch xe_tang empty.world.launch` và mở tab mới chạy `rosrun xe_tang teleop_keyboard.py` để điều khiển robot và tay máy bằng bàn phím.
 
 ---
 

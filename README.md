@@ -2,10 +2,9 @@ Chạy: `roslaunch xe_tang empty.world.launch` và mở tab mới chạy `rosrun
 
 ---
 
-mo phong xe tang (ros 1)
+Bài tập ROS giữa kỳ:
+-	Loại di chuyển: Bánh xích
+-	Tay máy (khớp 1): Tịnh tiến
+-	Tay máy (khớp 2): Xoay
+-	Cảm biến: LIDAR, Camera, Encoder
 
-cam bien: camera, lidar, encoder
-
-tay may 2 khop: khop 1 tinh tien, khop 2 xoay
-
-gazebo, rviz
